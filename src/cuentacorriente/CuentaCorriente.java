@@ -23,6 +23,12 @@ public class CuentaCorriente {
         cuenta=cue;
         saldo=sal;
     }
+
+    public CuentaCorriente(String nombre, String cuenta) {
+        this.nombre = nombre;
+        this.cuenta = cuenta;
+    }
+    
    // Método para asignar el nombre del titular de la cuenta
     public void asignarNombre(String nom)
     {
@@ -35,10 +41,14 @@ public class CuentaCorriente {
     }
 
     // Método que me devuelve el saldo disponible en cada momento
-     public double estado ()
+     public double getSaldo ()
     {
         return saldo;
     }
+     
+     public void setSaldo(double saldo){
+         this.saldo = saldo;
+     }
 
     /* Método para ingresar cantidades en la cuenta. Modifica el saldo.
      * Este método va a ser probado con Junit
@@ -59,7 +69,7 @@ public class CuentaCorriente {
     {
         if (cantidad < 0)
             throw new Exception ("No se puede retirar una cantidad negativa");
-        if (estado()< cantidad)
+        if (getSaldo()< cantidad)
             throw new Exception ("No hay suficiente saldo");
         saldo = saldo - cantidad;
     }
